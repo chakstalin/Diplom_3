@@ -30,9 +30,4 @@ public class RegisterPage {
         driver.findElement(signInLink).click();
     }
 
-    @Step("Проверка успешной регистрации")
-    public boolean isRegisterSuccessful() {
-        return driver.getCurrentUrl().contains("/login");
-    }
-
 }

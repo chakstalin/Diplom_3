@@ -26,8 +26,6 @@ public abstract class BaseTest {
     @Before
     public void setUpBase() {
         driver = WebDriverCreator.createWebDriver();
-        //ChromeOptions options = new ChromeOptions();
-        //driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         name = UserDataGenerator.generateRandomName();
         email = UserDataGenerator.generateRandomEmail();
@@ -44,6 +42,7 @@ public abstract class BaseTest {
         }
         if (token != null) {
             UserClient.deleteUser(token);
+            token = null;
         }
     }
 }

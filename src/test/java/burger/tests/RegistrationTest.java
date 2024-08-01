@@ -11,7 +11,6 @@ import api.UserClient;
 import io.qameta.allure.junit4.DisplayName;
 
 public class RegistrationTest extends BaseTest {
-    private String newUserToken = null;
     private HomePage homePage;
     private LoginPage loginPage;
     private RegisterPage registerPage;
@@ -33,9 +32,9 @@ public class RegistrationTest extends BaseTest {
         loginPage.clickRegistrationLink();
         registerPage.registerUser(user.getName(), user.getEmail(), user.getPassword());
 
-        newUserToken = UserClient.getUserToken(new UserPOJO(user.getEmail(), user.getPassword()));
+        token = UserClient.getUserToken(new UserPOJO(user.getEmail(), user.getPassword()));
 
-        assertTrue("Пользователь должен быть зарегистрирован", newUserToken != null);
+        assertTrue("Пользователь должен быть зарегистрирован", token != null);
     }
 
     @Test
@@ -46,6 +45,8 @@ public class RegistrationTest extends BaseTest {
         String shortPassword = UserDataGenerator.generateShortPassword();
         registerPage.registerUser(user.getName(), user.getEmail(), shortPassword);
 
-        assertFalse("Регистрация должна быть отклонена из-за короткого пароля", registerPage.isRegisterSuccessful());
+        token = UserClient.getUserToken(new UserPOJO(user.getEmail(), user.getPassword()));
+
+        assertTrue("Регистрация должна быть отклонена из-за короткого пароля", token == null);
     }
 }

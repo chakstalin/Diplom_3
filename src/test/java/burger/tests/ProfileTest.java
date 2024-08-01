@@ -20,6 +20,7 @@ public class ProfileTest extends BaseTest {
         profilePage = new ProfilePage(driver);
 
         UserClient.registerUser(user);
+        token = UserClient.getUserToken(user);
         homePage.clickSignInButton();
         loginPage.loginUser(user.getEmail(), user.getPassword());
     }

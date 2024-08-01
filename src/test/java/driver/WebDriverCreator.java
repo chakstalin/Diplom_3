@@ -10,6 +10,7 @@ public class WebDriverCreator {
     WEBDRIVERS - путь к папке с драйверами для браузеров
     YANDEX_BROWSER_DRIVER_FILENAME - имя файла драйвера Яндекс браузера (Хромдрайвера нужной версии)
     YANDEX_BROWSER_PATH - путь к исполняемому файлу Яндекс браузера в системе
+    CHROME_TEST_PATH - путь к исполняемому файлу нужной версии Chrome
      */
 
     public static WebDriver createWebDriver() {
@@ -29,6 +30,7 @@ public class WebDriverCreator {
 
     private static WebDriver createChromeDriver() {
         ChromeOptions options = new ChromeOptions();
+        options.setBinary(System.getenv("CHROME_TEST_PATH"));
         return new ChromeDriver(options);
     }
 

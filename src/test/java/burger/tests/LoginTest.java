@@ -17,6 +17,8 @@ public class LoginTest extends BaseTest {
     @Before
     public void setUp(){
         UserClient.registerUser(user);
+        token = UserClient.getUserToken(user);
+
         homePage = new HomePage(driver);
         loginPage = new LoginPage(driver);
         registerPage = new RegisterPage(driver);
