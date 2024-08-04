@@ -19,9 +19,9 @@ public abstract class BaseTest {
     protected WebDriver driver;
     protected UserPOJO user;
     protected String token;
-    String name;
-    String email;
-    String password;
+    private String name;
+    private String email;
+    private String password;
 
     @Before
     public void setUpBase() {

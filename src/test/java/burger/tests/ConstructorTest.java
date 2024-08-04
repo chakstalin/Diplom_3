@@ -8,7 +8,7 @@ import static org.junit.Assert.assertTrue;
 
 public class ConstructorTest extends BaseTest {
 
-    HomePage homePage;
+    private HomePage homePage;
 
     @Before
     public void SetUp(){
